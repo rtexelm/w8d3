@@ -1,0 +1,33 @@
+/* PHASE 2: Thumbs */
+
+.profile-friends {
+    display: flex;
+    flex-flow: row wrap;
+}
+.profile-friends > li {
+    display: flexbox;
+    width: 55px;
+    margin: 0 0 10px 0; 
+}
+.profile-friends > li:nth-child(3n-1) {
+    margin: 0 10px 10px 10px;
+}
+
+.thumb {
+    display: block;
+    position: relative;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+.thumb:hover:before {
+    content: attr(title);
+    display: block;
+    position: absolute;
+}
+
+.thumb:hover:after {
+    content: attr(title);
+    display: block;
+    position: absolute;
+}
