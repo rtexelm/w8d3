@@ -93,17 +93,20 @@ Board.prototype._positionsToFlip = function(pos, color, dir, piecesToFlip){
   if (!this.isOccupied([x1 + dirX, y1 + dirY])) {return []};
   // if (this.getPiece([x1 + dirX, y1 + dirY]).color === color) {return []};
   let pieces = []; 
-  while (true) {
-    x1 += dirX; y1 += dirY; 
-    // debugger
-    if (!this.isValidPos([x1, y1])) {return []};
-    let piece = this.getPiece2([x1, y1]); 
-    if ( piece === undefined) {return []};
-    if (piece.color === color ) { return pieces}
-    else (pieces.push([x1, y1]));
-    // return pieces
-  }
-
+  // while (true) {
+  //   x1 += dirX; y1 += dirY; 
+  //   // debugger
+  //   if (!this.isValidPos([x1, y1])) {return []};
+  //   let piece = this.getPiece2([x1, y1]); 
+  //   if ( piece === undefined) {return []};
+  //   if (piece.color === color ) { return pieces}
+  //   else (pieces.push([x1, y1]));
+  //   // return pieces
+  // }
+  piecesToFlip = piecesToFlip || [];
+  pos = [x1 + dirX, y1 + dirY];
+  if(this.getPiece2(pos).color != color) {piecesToFlip.push(pos)} else {return piecesToFlip};
+  return this._positionsToFlip(pos,color,dir,piecesToFlip);
 
 };
 
