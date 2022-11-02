@@ -1,3 +1,37 @@
 .form {
     background-color: lightgray;
 }
+
+.form .content {
+    color: black;
+    font-weight: 700;
+    background-color: lightgray;
+    width: 500px;
+    margin-left: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.form label {
+    background-color: white;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    width: 500px;
+    padding: 3px 0px;
+}
+
+.form .submit {
+    margin-top: 10px;
+    margin-left: 20px;
+    font-weight: 700;
+    width: 67px;
+    color: #fff;
+    background: #0c0;
+    padding: 10px 15px;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+textarea {
+    
+}

@@ -1,7 +1,6 @@
 .thumbs li {
     position: relative;
     width: 55px;
-    /* overflow: auto; */
     border: 1px;
     border-color: black;
     border-style: solid;
@@ -19,7 +18,5 @@
 
 .thumbs ul {
     display: flex;
-    flex-direction: row;
-    overflow: auto;
     flex-wrap: wrap;
 }
