@@ -91,7 +91,7 @@ Board.prototype._positionsToFlip = function(pos, color, dir, piecesToFlip){
     if (!this.isValidPos([x1, y1])) {return []};
     let piece = this.getPiece([x1, y1]); 
     if ( piece === undefined) {return []};
-    if (piece.color === color ) { return pieces};
+    if (piece.color === color ) { return pieces}
     else (pieces.push([x1, y1]));
     // return pieces
   }
