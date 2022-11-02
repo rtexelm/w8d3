@@ -9,7 +9,10 @@ if (typeof window === 'undefined'){
  * and two white pieces at [3, 3] and [4, 4]
  */
 function _makeGrid () {
-  let grid = new Array(8).fill(new Array(8));
+  let grid = [];
+  for (let i = 0; i < 8; i++) {
+    grid.push(new Array(8));
+  }
   grid[3][3] = new Piece('white');
   grid[4][4] = new Piece('white');
   grid[3][4] = new Piece('black');
@@ -34,6 +37,7 @@ Board.DIRS = [
  * Checks if a given position is on the Board.
  */
 Board.prototype.isValidPos = function (pos) {
+  return [0, 1, 2, 3, 4, 5, 6, 7].includes(pos[0]) && [0, 1, 2, 3, 4, 5, 6, 7].includes(pos[1])
 };
 
 /**
@@ -41,6 +45,8 @@ Board.prototype.isValidPos = function (pos) {
  * throwing an Error if the position is invalid.
  */
 Board.prototype.getPiece = function (pos) {
+  if (this.isValidPos(pos) === false) { throw new Error('Not valid pos!') };
+  return this.grid[pos[0]][pos[1]];
 };
 
 /**
@@ -48,12 +54,15 @@ Board.prototype.getPiece = function (pos) {
  * matches a given color.
  */
 Board.prototype.isMine = function (pos, color) {
+  return (this.getPiece(pos) ? this.getPiece(pos).color === color : undefined);
+  // return (this.grid[pos[0]][pos[1]].color === color)
 };
 
 /**
  * Checks if a given position has a piece on it.
  */
 Board.prototype.isOccupied = function (pos) {
+  return (this.getPiece(pos) != undefined);
 };
 
 /**
@@ -70,6 +79,24 @@ Board.prototype.isOccupied = function (pos) {
  * Returns empty array if no pieces of the opposite color are found.
  */
 Board.prototype._positionsToFlip = function(pos, color, dir, piecesToFlip){
+  let x1 = pos[0]; let y1 = pos[1]; let dirX = dir[0]; let dirY = dir[1];
+
+  if (!this.isValidPos(pos)) { return []};
+  if (!this.isOccupied([x1 + dirX, y1 + dirY])) {return []};
+  // if (this.getPiece([x1 + dirX, y1 + dirY]).color === color) {return []};
+  let pieces = []; 
+  while (true) {
+    x1 += dirX; y1 += dirY; 
+    // debugger
+    if (!this.isValidPos([x1, y1])) {return []};
+    let piece = this.getPiece([x1, y1]); 
+    if ( piece === undefined) {return []};
+    if (piece.color === color ) { return pieces};
+    else (pieces.push([x1, y1]));
+    // return pieces
+  }
+
+
 };
 
 /**
