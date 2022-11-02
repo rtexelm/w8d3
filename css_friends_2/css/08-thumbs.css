@@ -1,2 +1,25 @@
-/* PHASE 2: Thumbs */
+.thumbs li {
+    position: relative;
+    width: 55px;
+    /* overflow: auto; */
+    border: 1px;
+    border-color: black;
+    border-style: solid;
+    border-radius: 2px;
+    margin: 3px;
+}
 
+.thumbs li:nth-child(3n+1){
+    margin-left: 0px;
+}
+
+.thumbs li:nth-child(3n){
+    margin-right: 0px;
+}
+
+.thumbs ul {
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    flex-wrap: wrap;
+}
